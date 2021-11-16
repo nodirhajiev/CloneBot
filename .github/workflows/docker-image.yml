@@ -1,18 +1,24 @@
-name: Docker Image CI
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
+name: Container
+on: workflow_dispatch
+env:
+  IMAGE_NAME: web
+  HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+  HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+  CONFIG_FILE_URL: ${{ secrets.CONFIG_FILE_URL }}
 jobs:
-
-  build:
-
+  build_and_push:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      - uses: actions/checkout@v2
+      - name: Build the image
+        run: docker build . --file Dockerfile --tag "${IMAGE_NAME}"
+      - name: Login into Heroku Container registry
+        run: heroku container:login
+      - name: Push the image to Heroku
+        run: heroku container:push "${IMAGE_NAME}" -a "${HEROKU_APP_NAME}"
+        
+      - name: Release image to Heroku
+        run: heroku container:release "${IMAGE_NAME}" -a "${HEROKU_APP_NAME}"
+      - name: Set ENV
+        run: |
+            heroku config:set CONFIG_FILE_URL="${CONFIG_FILE_URL}" -a "${HEROKU_APP_NAME}"
