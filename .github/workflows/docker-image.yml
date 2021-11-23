@@ -19,6 +19,3 @@ jobs:
         
       - name: Release image to Heroku
         run: heroku container:release "${IMAGE_NAME}" -a "${HEROKU_APP_NAME}"
-      - name: Set ENV
-        run: |
-            heroku config:set CONFIG_FILE_URL="${CONFIG_FILE_URL}" -a "${HEROKU_APP_NAME}"
