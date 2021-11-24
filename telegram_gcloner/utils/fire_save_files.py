@@ -159,7 +159,7 @@ class MySaveFileThread(threading.Thread):
                                        '├ 📦 Size：<code>{} / {}</code>\n{}' \
                                        '├ ⚡️Speed：<code>{}</code> \n├⏳ ETA: <code>{}</code>\n' \
                                        '├ ⛩ Progress：[<code>{}</code>] {: >4}%\n│\n' \
-                                       '├──────⌈ ⚡️ CloneBot ⌋──────' \
+                                       '├───⌈ ⚡️ CloneBot by Nodir X ⌋───' \
                         .format(
                         folder_id,
                         html.escape(destination_path),
