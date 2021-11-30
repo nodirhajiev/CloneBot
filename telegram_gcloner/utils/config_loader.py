@@ -15,10 +15,10 @@ class _Config:
     def __init__(self):
         self._ad_string = ''
         self._log_file = ''
-        self._telegram_token = 2139813940:AAFu0-Nkzd0H9kajeIgOyyLBF3oHkKG6IJM
+        self._telegram_token = None
         self._path_to_gclone = None
-        self._user_ids = '4788224'
-        self._group_ids = '-1'
+        self._user_ids = ''
+        self._group_ids = ''
         self._gclone_para_override = ''
         self._base_path = os.path.dirname(os.path.dirname(__file__))
         self.TIMER_TO_DELETE_MESSAGE = 10
