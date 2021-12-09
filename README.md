@@ -112,10 +112,4 @@ Note : there are hidden features, check at the source code of the bot to find th
 - Team drive generator : https://td.msgsuite.workers.dev/
 - Telegram chat : https://t.me/nodir_hajiev
 
-## ❤️ Credits & thanks :
-- [wrenfairbank](https://github.com/wrenfairbank/telegram_gcloner) for the original python script
-- [smartass08](https://github.com/smartass08/telegram_gcloner) to adapt the scrip to heroku
-- [anymeofu](https://github.com/anymeofu/CloneBot) for making the Direct Heroku deployable Version
-- Zero-The-Kamisama to making me discover this amazing bot and the detailed instructions
-- [zorgof](https://t.me/zorgof) for the termux script
-- [Aishik Tokdar](https://t.me/aishik2005) for Adding Guide to Deploy on Railway.app and Qovery and some other Code Improvements
+
