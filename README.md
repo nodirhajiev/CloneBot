@@ -110,8 +110,7 @@ Note : there are hidden features, check at the source code of the bot to find th
 
 ## 📢 Follow us:
 - Team drive generator : https://td.msgsuite.workers.dev/
-- Telegram channel : https://t.me/MsGsuite
-- Telegram chat : https://t.me/MsGsuiteChat
+- Telegram chat : https://t.me/nodir_hajiev
 
 ## ❤️ Credits & thanks :
 - [wrenfairbank](https://github.com/wrenfairbank/telegram_gcloner) for the original python script
