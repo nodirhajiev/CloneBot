@@ -190,17 +190,6 @@ def error(update, context):
     trace = "".join(traceback.format_tb(sys.exc_info()[2]))
     # lets try to get as much information from the telegram update as possible
     payload = ""
-    # normally, we always have an user. If not, its either a channel or a poll update.
-    if update.effective_user:
-        payload += f' with the user ' \
-                   f'{mention_html(update.effective_user.id, html.escape(update.effective_user.first_name))} '
-    # there are more situations when you don't get a chat
-    if update.effective_chat:
-        if update.effective_chat.title:
-            payload += f' within the chat <i>{html.escape(update.effective_chat.title)}</i>'
-        if update.effective_chat.username:
-            payload += f' (@{update.effective_chat.username}, {update.effective_chat.id})'
-    # but only one where you have an empty payload by now: A poll (buuuh)
     if update.poll:
         payload += f' with the poll id {update.poll.id}.'
 
