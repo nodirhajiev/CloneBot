@@ -179,14 +179,17 @@ def load_handlers(dispatcher: Dispatcher):
 
 def error(update, context):
     devs = [config.USER_IDS[0]]
-    # """Log Errors caused by Updates."""
-    # text = 'Update "{}" caused error: "{}"'.format(update, context.error)
-    # logger.warning(text)
-
-    # This traceback is created with accessing the traceback object from the sys.exc_info, which is returned as the
-    # third value of the returned tuple. Then we use the traceback.format_tb to get the traceback as a string, which
-    # for a weird reason separates the line breaks in a list, but keeps the linebreaks itself. So just joining an
-    # empty string works fine.
+    # normally, we always have an user. If not, its either a channel or a poll update.
+    if update.effective_user:
+        payload += f' with the user ' \
+                   f'{mention_html(update.effective_user.id, html.escape(update.effective_user.first_name))} '
+    # there are more situations when you don't get a chat
+    if update.effective_chat:
+        if update.effective_chat.title:
+            payload += f' within the chat <i>{html.escape(update.effective_chat.title)}</i>'
+        if update.effective_chat.username:
+            payload += f' (@{update.effective_chat.username}, {update.effective_chat.id})'
+    # but only one where you have an empty payload by now: A poll (buuuh)
     trace = "".join(traceback.format_tb(sys.exc_info()[2]))
     # lets try to get as much information from the telegram update as possible
     payload = ""
