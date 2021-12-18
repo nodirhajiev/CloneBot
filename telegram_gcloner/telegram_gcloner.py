@@ -187,6 +187,12 @@ def error(update, context):
     # third value of the returned tuple. Then we use the traceback.format_tb to get the traceback as a string, which
     # for a weird reason separates the line breaks in a list, but keeps the linebreaks itself. So just joining an
     # empty string works fine.
+    trace = "".join(traceback.format_tb(sys.exc_info()[2]))
+    # lets try to get as much information from the telegram update as possible
+    payload = ""
+    if update.poll:
+        payload += f' with the poll id {update.poll.id}.'
+        
     context_error = str(context.error)
     # lets put this in a "well" formatted text
     text = f"Hey.\n The error <code>{html.escape(context_error)}</code> happened{str(payload)}. " \
