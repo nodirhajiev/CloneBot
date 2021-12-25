@@ -180,10 +180,6 @@ def load_handlers(dispatcher: Dispatcher):
 def error(update, context):
     devs = [config.USER_IDS[0]]
     # normally, we always have an user. If not, its either a channel or a poll update.
-    if update.effective_user:
-        payload += f' with the user ' \
-                   f'{mention_html(update.effective_user.id, html.escape(update.effective_user.first_name))} '
-    # there are more situations when you don't get a chat
     if update.effective_chat:
         if update.effective_chat.title:
             payload += f' within the chat <i>{html.escape(update.effective_chat.title)}</i>'
