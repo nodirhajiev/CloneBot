@@ -79,7 +79,7 @@ def process_drive_links(update, context):
         except Exception as e:
             update.message.reply_text('🔸 Please make sure that the SA archive has been uplaoded and that the SA has permission to access the link.\n{}'.format(e))
             return
-        message += '     <a href="https://drive.google.com/open?id={}">{}</a>\n'.format(
+        message += '<a href="https://drive.google.com/open?id={}">{}</a>\n'.format(
             item, html.escape(folder_name))
     message += '\n📂 Please select the target destination'
     fav_folder_ids = context.user_data.get(udkey_folders, None)
@@ -169,4 +169,4 @@ def save_to_folder(update, context):
     t.start()
     logger.debug('User {} has added task {}.'.format(query.from_user.id, t.ident))
     query.message.edit_reply_markup(reply_markup=InlineKeyboardMarkup(
-        [[InlineKeyboardButton(text='Executed', callback_data='#')]]))
+        [[InlineKeyboardButton(text='🕓 Executed', callback_data='#')]]))
