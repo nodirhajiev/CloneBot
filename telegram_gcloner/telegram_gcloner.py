@@ -176,29 +176,5 @@ def load_handlers(dispatcher: Dispatcher):
     module.init(dispatcher)
     logger.info('loaded handler module: process_message')
 
-
-def error(update, context):
-    devs = [config.USER_IDS[0]]
-    # normally, we always have an user. If not, its either a channel or a poll update.
-    trace = "".join(traceback.format_tb(sys.exc_info()[2]))
-    # lets try to get as much information from the telegram update as possible
-    payload = ""
-    context_error = str(context.error)
-    # lets put this in a "well" formatted text
-    text = f"Hey.\n The error <code>{html.escape(context_error)}</code> happened{str(payload)}. " \
-           f"The full traceback:\n\n<code>{html.escape(str(trace))}" \
-           f"</code>"
-
-    # ignore message is not modified error from telegram
-    if 'Message is not modified' in context_error:
-        return
-
-    # and send it to the dev(s)
-    for dev_id in devs:
-        context.bot.send_message(dev_id, text, parse_mode=ParseMode.HTML)
-    # we raise the error again, so the logger module catches it. If you don't use the logger module, use it.
-    raise
-
-
 if __name__ == '__main__':
     main()
