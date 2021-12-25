@@ -258,23 +258,23 @@ class MySaveFileThread(threading.Thread):
                                               parse_mode=ParseMode.HTML, disable_web_page_preview=True,
                                               reply_markup=inline_keyboard)
             except Exception as e:
-                logger.debug('Error {} occurs when editing message {} for user {} in chat {}: \n│{}'.format(
+                logger.debug('Error {} occurs when editing message {} for user {} in chat {}: \n{}'.format(
                     e, message_id, user_id, chat_id, message))
 
             if self.critical_fault is True:
                 break
 
-        message += '\n✅Finished!'
+        message += '\n✅ Finished!'
         try:
             context.bot.edit_message_text(chat_id=chat_id, message_id=message_id, text=message,
                                           parse_mode=ParseMode.HTML, disable_web_page_preview=True)
         except Exception as e:
-            logger.debug('Error {} occurs when editing message {} for user {} in chat {}: \n│{}'.format(
+            logger.debug('Error {} occurs when editing message {} for user {} in chat {}: \n{}'.format(
                 e, message_id, user_id, chat_id, message))
         update.callback_query.message.edit_reply_markup(reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton(text='✅ Done', callback_data='cancel')]]))
 
-        logger.debug('User {} has finished task {}: \n│{}'.format(user_id, thread_id, message))
+        logger.debug('User {} has finished task {}: \n{}'.format(user_id, thread_id, message))
         tasks = thread_pool.get(user_id, None)
         if tasks:
             for t in tasks:
