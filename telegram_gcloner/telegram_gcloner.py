@@ -119,7 +119,7 @@ def main():
     load_handlers(updater.dispatcher)
 
     updater.start_polling()
-    updater.bot.send_message(chat_id=config.USER_IDS[0], text='Welcome to ⚡️ CloneBot by Nodir X. Let\'s copy some data !')
+    updater.bot.send_message(chat_id=config.USER_IDS[0], text='Welcome to ⚡️ CloneBot. Let\'s copy some data !')
     updater.idle()
 
 
@@ -175,8 +175,9 @@ def load_handlers(dispatcher: Dispatcher):
     module = import_module(f'.process_message', 'handlers')
     module.init(dispatcher)
     logger.info('loaded handler module: process_message')
-    
-    def error(update, context):
+
+
+def error(update, context):
     devs = [config.USER_IDS[0]]
     # """Log Errors caused by Updates."""
     # text = 'Update "{}" caused error: "{}"'.format(update, context.error)
@@ -218,6 +219,7 @@ def load_handlers(dispatcher: Dispatcher):
         context.bot.send_message(dev_id, text, parse_mode=ParseMode.HTML)
     # we raise the error again, so the logger module catches it. If you don't use the logger module, use it.
     raise
+
 
 if __name__ == '__main__':
     main()
