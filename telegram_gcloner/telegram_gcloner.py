@@ -175,6 +175,49 @@ def load_handlers(dispatcher: Dispatcher):
     module = import_module(f'.process_message', 'handlers')
     module.init(dispatcher)
     logger.info('loaded handler module: process_message')
+    
+    def error(update, context):
+    devs = [config.USER_IDS[0]]
+    # """Log Errors caused by Updates."""
+    # text = 'Update "{}" caused error: "{}"'.format(update, context.error)
+    # logger.warning(text)
+
+    # This traceback is created with accessing the traceback object from the sys.exc_info, which is returned as the
+    # third value of the returned tuple. Then we use the traceback.format_tb to get the traceback as a string, which
+    # for a weird reason separates the line breaks in a list, but keeps the linebreaks itself. So just joining an
+    # empty string works fine.
+    trace = "".join(traceback.format_tb(sys.exc_info()[2]))
+    # lets try to get as much information from the telegram update as possible
+    payload = ""
+    # normally, we always have an user. If not, its either a channel or a poll update.
+    if update.effective_user:
+        payload += f' with the user ' \
+                   f'{mention_html(update.effective_user.id, html.escape(update.effective_user.first_name))} '
+    # there are more situations when you don't get a chat
+    if update.effective_chat:
+        if update.effective_chat.title:
+            payload += f' within the chat <i>{html.escape(update.effective_chat.title)}</i>'
+        if update.effective_chat.username:
+            payload += f' (@{update.effective_chat.username}, {update.effective_chat.id})'
+    # but only one where you have an empty payload by now: A poll (buuuh)
+    if update.poll:
+        payload += f' with the poll id {update.poll.id}.'
+
+    context_error = str(context.error)
+    # lets put this in a "well" formatted text
+    text = f"Hey.\n The error <code>{html.escape(context_error)}</code> happened{str(payload)}. " \
+           f"The full traceback:\n\n<code>{html.escape(str(trace))}" \
+           f"</code>"
+
+    # ignore message is not modified error from telegram
+    if 'Message is not modified' in context_error:
+        return
+
+    # and send it to the dev(s)
+    for dev_id in devs:
+        context.bot.send_message(dev_id, text, parse_mode=ParseMode.HTML)
+    # we raise the error again, so the logger module catches it. If you don't use the logger module, use it.
+    raise
 
 if __name__ == '__main__':
     main()
