@@ -32,7 +32,7 @@ def contact(update, context):
                                     from_chat_id=update.message.chat_id,
                                     message_id=update.message.message_id)
         logger.info('{} ({}) left a message: {}'.format(update.effective_user.name, update.effective_user.id, text))
-        rsp = update.message.reply_text('👍')
+        rsp = update.message.reply_text('👍 Cool')
         rsp.done.wait(timeout=60)
         message_id = rsp.result().message_id
         if update.message.chat_id < 0:
