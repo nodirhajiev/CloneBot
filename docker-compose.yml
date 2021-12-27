@@ -4,4 +4,4 @@ web:
   - "8000:80"
  volumes:
   - ".:/usr/src/app:rw"
- command: bash run.sh
+ command: bash start.sh
