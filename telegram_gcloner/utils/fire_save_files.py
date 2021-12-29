@@ -87,7 +87,7 @@ class MySaveFileThread(threading.Thread):
             command_line += ['--config', gclone_config]
             command_line += [
                 '{}:{{{}}}'.format('gc', folder_id),
-                ('{}:{{{}}}'.format('gc', dest_folder['folder_id'], folder_id))
+                ('{}:{{{}}}/{}'.format('gc', dest_folder['folder_id'], folder_id))
             ]
 
             logger.debug('command line: ' + str(command_line))
