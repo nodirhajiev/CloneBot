@@ -36,7 +36,7 @@ class MySaveFileThread(threading.Thread):
         chat_id = update.effective_chat.id
         user_id = update.effective_user.id
         gd = GoogleDrive(user_id)
-        message = '          [~ 📥 Copying ~]\n\n📂 Target directory：{}\n\n'.format(dest_folder['path'])
+        message = '          [~ 📥 Copying 📥 ~]\n\n📂 Target directory：{}\n\n'.format(dest_folder['path'])
         inline_keyboard = InlineKeyboardMarkup(
             [[InlineKeyboardButton(text=f'🚫 Stop', callback_data=f'stop_task,{thread_id}')]])
 
@@ -237,7 +237,7 @@ class MySaveFileThread(threading.Thread):
             try:
                 link = gd.get_folder_link(dest_folder['folder_id'], destination_path)
                 if link:
-                    link_text = '\n👉 <a href="{}">GDrive link</a> 👈'.format(link)
+                    link_text = '\n👉 <a href="{}">GDrive Link</a> 👈'.format(link)
             except Exception as e:
                 logger.info(str(e))
 
