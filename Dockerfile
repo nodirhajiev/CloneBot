@@ -1,4 +1,5 @@
-FROM ubuntu:18.04
+# FROM ubuntu:18.04
+FROM anasty17/mltb-oracle:latest
 
 WORKDIR /usr/src/app
 RUN chmod 777 /usr/src/app
