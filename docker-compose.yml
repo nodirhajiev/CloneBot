@@ -8,7 +8,6 @@ services:
       - telegram_token=${telegram_token}
       - user_ids=${user_ids}
       - group_ids=${group_ids}
-      - PORT=${PORT}
     ports:
-      - ${PORT}:${PORT}
+      - 8000:80
     restart: unless-stopped
