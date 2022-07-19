@@ -28,7 +28,7 @@ def add_group(update, context):
             mention_html_from_user = mention_html(update.message.from_user.id,
                                                   html.escape(update.message.from_user.full_name))
             context.bot.send_message(chat_id=update.message.chat_id,
-                                     text='『{}』Thank you for adding this MsgSuite CloneBot bot to the group. {}'
+                                     text='『{}』Thank you for adding this CloneBot bot to the group. {}'
                                      .format(mention_html_from_user,
                                              config.AD_STRING.format(context.bot.username)),
                                      parse_mode=ParseMode.HTML)
