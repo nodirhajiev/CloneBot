@@ -7,7 +7,6 @@ from telegram.ext import Dispatcher, CallbackQueryHandler
 
 from utils.fire_save_files import thread_pool
 from utils.helper import alert_users
-from utils.restricted import restricted
 
 logger = logging.getLogger(__name__)
 
