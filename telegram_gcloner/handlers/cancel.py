@@ -5,7 +5,6 @@ import logging
 from telegram.ext import Dispatcher, CallbackQueryHandler
 
 from utils.helper import alert_users
-from utils.restricted import restricted
 
 logger = logging.getLogger(__name__)
 
