@@ -12,7 +12,6 @@ from zipfile import ZipFile
 from telegram.ext import Dispatcher, CommandHandler, MessageHandler, Filters
 
 from utils.config_loader import config
-from utils.restricted import restricted_private
 
 logger = logging.getLogger(__name__)
 
