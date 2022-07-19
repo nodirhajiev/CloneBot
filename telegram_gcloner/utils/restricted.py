@@ -92,11 +92,11 @@ def restricted_group_and_its_members_in_private(func):
         ban_list = context.bot_data.get('ban', [])
         allow = False
         if user_id in config.USER_IDS:
-            allow = False
+            allow = True
         elif user_id not in ban_list:
             if chat_id < 0:
                 if chat_id in config.GROUP_IDS:
-                    allow = False
+                    allow = True
             else:
                 for group_id in config.GROUP_IDS:
                     info = context.bot.get_chat_member(chat_id=group_id, user_id=update.effective_user.id)
@@ -105,20 +105,6 @@ def restricted_group_and_its_members_in_private(func):
                         break
         if allow is False:
             logger.info('Unauthorized access denied for group and its members messages{} {}.'
-                        .format(update.effective_user.full_name, user_id))
-            return
-        return func(update, context, *args, **kwargs)
-    return wrapped
-
-
-def restricted_user_ids(func):
-    @wraps(func)
-    def wrapped(update, context, *args, **kwargs):
-        if not update.effective_user:
-            return
-        user_id = update.effective_user.id
-        if user_id not in config.USER_IDS:
-            logger.info('Unauthorized access denied for {} {}.'
                         .format(update.effective_user.full_name, user_id))
             return
         return func(update, context, *args, **kwargs)
