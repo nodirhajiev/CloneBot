@@ -6,7 +6,6 @@ from telegram.ext import Dispatcher, CommandHandler
 
 from utils.config_loader import config
 from utils.callback import callback_delete_message
-from utils.restricted import restricted
 
 logger = logging.getLogger(__name__)
 
