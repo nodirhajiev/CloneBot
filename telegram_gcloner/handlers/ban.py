@@ -8,7 +8,6 @@ from telegram.ext import Dispatcher, CommandHandler, CallbackContext, Filters
 
 from utils.config_loader import config
 from utils.fire_save_files import thread_pool
-from utils.restricted import restricted_admin
 
 logger = logging.getLogger(__name__)
 
