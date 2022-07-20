@@ -159,7 +159,7 @@ class MySaveFileThread(threading.Thread):
                                        '📦 Size：<code>{} / {}</code>\n{}' \
                                        '⚡️ Speed：<code>{}</code> \n⏳ Time: <code>{}</code>\n' \
                                        '⛩ Progress：[<code>{}</code>] {: >4}%\n\n' \
-                                       '[~⚡️GClone Bot⚡️ by ⚡️NXD⚡️~]' \
+                                       '[~☁️GClone Bot🤖 by ⚡️NXD⚡️~]' \
                         .format(
                         folder_id,
                         html.escape(destination_path),
@@ -237,7 +237,7 @@ class MySaveFileThread(threading.Thread):
             try:
                 link = gd.get_folder_link(dest_folder['folder_id'], destination_path)
                 if link:
-                    link_text = '\n👉 <a href="{}">GDrive Link</a> 👈'.format(link)
+                    link_text = '\n👉 <a href="{}">☁️GDrive Link</a> 👈'.format(link)
             except Exception as e:
                 logger.info(str(e))
 
