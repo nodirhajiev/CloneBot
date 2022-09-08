@@ -257,7 +257,7 @@ def set_folders(update, context):
             callback_query_prefix + '_replace',
             page_data,
             page=page,
-            max_per_page=10,
+            max_per_page=30,
         )
     else:
         inline_keyboard_drive_ids = []
