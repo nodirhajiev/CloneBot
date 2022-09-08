@@ -15,8 +15,8 @@ from utils.restricted import restricted
 
 logger = logging.getLogger(__name__)
 
-default_max_folders = 4
-default_max_folders_vip = 10
+default_max_folders = 5
+default_max_folders_vip = 25
 
 udkey_folders = 'folder_ids'
 udkey_folders_cache = 'folder_ids_cache'
