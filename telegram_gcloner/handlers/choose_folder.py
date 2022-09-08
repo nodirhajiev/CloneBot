@@ -191,7 +191,7 @@ def choose_folder(update, context):
         page_data,
         page_data_chosen=page_data_chosen,
         page=page,
-        max_per_page=10,
+        max_per_page=30,
     )
 
     if current_folder_id:
@@ -257,7 +257,7 @@ def set_folders(update, context):
             callback_query_prefix + '_replace',
             page_data,
             page=page,
-            max_per_page=10,
+            max_per_page=30,
         )
     else:
         inline_keyboard_drive_ids = []
