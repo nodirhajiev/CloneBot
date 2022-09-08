@@ -16,7 +16,7 @@ from utils.restricted import restricted
 logger = logging.getLogger(__name__)
 
 default_max_folders = 5
-default_max_folders_vip = 25
+default_max_folders_vip = 30
 
 udkey_folders = 'folder_ids'
 udkey_folders_cache = 'folder_ids_cache'
@@ -191,7 +191,7 @@ def choose_folder(update, context):
         page_data,
         page_data_chosen=page_data_chosen,
         page=page,
-        max_per_page=30,
+        max_per_page=10,
     )
 
     if current_folder_id:
