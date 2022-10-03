@@ -119,7 +119,7 @@ def main():
     load_handlers(updater.dispatcher)
 
     updater.start_polling()
-    updater.bot.send_message(chat_id=config.USER_IDS[0], text='Welcome to ☁️GClone Bot🤖.\nLet\'s copy some data!\n\n🧲Join to https://t.me/nodirdrivebots for mirroring and leeching!🧲')
+    updater.bot.send_message(chat_id=config.USER_IDS[0], text='Welcome to ☁️GClone Bot🤖.\nLet\'s copy some data!\n\n😛If you need more bookmarks, contact with nodir_khajiev.t.me!😛')
     updater.idle()
 
 
